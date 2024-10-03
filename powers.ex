@@ -2,27 +2,48 @@ defmodule Powers do
     def square(n) do
         n * n
     end
+
+    def cube(n) do
+        Powers.square(n) * n
     
-end
+    end
 
-
-defmodule Division do
-    def divised(a, b) do
-        a / b
+    def square_or_cube(n, 2) do
 
     end
-end
 
+    def square_or_cube(n, 3) do
 
-defmodule Cube do
-    def cube(x) do
-        Powers.square(x) * x
     end
+
+    def square_or_cube( ,) do
+
+    end
+
+    def pow_2(n, p) do
+        pow_2(n, p)
+
+    end
+ 
 end
 
 
-defmodule MultiClause do
-    def square_or_cube
+
+defmodule ListModule do
+    def sum_square([1,2,3] ) do
+    
+    end
+
+    def len([]) do
+
+    end
+
+    def reverse([]) do
+
+    end
+
+
+
 
 
 
