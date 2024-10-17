@@ -20,11 +20,11 @@ defmodule IncreasingTimeout do
             delta: 50000,
             alive: MapSet.new(process), #set of alive processes
             suspected: %MapSet{} #set of suspected processes
+            delay: 0
         }
 
 
     end
-
 
 
     def run(state) do
@@ -35,7 +35,7 @@ defmodule IncreasingTimeout do
                 state = %{state | alive: %MapSet{}}
                 Process.send_after(self(), {:timeout}, state.delta)
                 state
-                
+
             {:heartbeat_request, pid} ->
 
                 send(pid, {:heartbeat_reply, state.name})
@@ -58,26 +58,19 @@ defmodule IncreasingTimeout do
          state = if p not in state.alive and p not in state.suspected do
              state = %{state | suspected MapSet.put(state.suspected, p)}
              send(self(), {:crash, p})
-             state
+             #trigger suspext
         
          else p in state.alive and p in state.suspected do
             state = %{state | suspected MapSet.delete(state.suspected, p)}
+            #trigger restore
          end
+
+         alive = MapSet.new()
+        
+
              
 
 
 
 
-    def heartbeat_request() do
-
-    end
-
-
-
-    def heartbeat_reply() do
-
-
-    end
-
-
-
+    
