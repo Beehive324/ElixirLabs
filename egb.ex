@@ -35,7 +35,7 @@ defmodule EagerReliableBroadcast do
 
                # Use the provided beb_broadcast function to propagate data_msg to
                # all process
-               beb_broadcast(data_msg, state.processes)
+               beb_broadcast(data_msg, state.processes) #sends the message using beb_broadcast
                beb_broadcast_with_failures(state.name, state.proc, state.proc, m)
                state = %{state | seq_no: state.seq_no + 1} # update seq_nofield
                state    # return the updated state
