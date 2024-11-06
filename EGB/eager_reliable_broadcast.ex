@@ -43,11 +43,7 @@ defmodule EagerReliableBroadcast do
                   state
 
                 end
-               # If <proc, seqno> was already delivered, do nothing.
-               # Otherwise, update delivered, generate a deliver event for the
-               # upper layer, and re-broadcast (echo) the received message.
-               # In both cases, do not forget to return the state.
-               state
+                state
 
             {:deliver, proc, m} ->
                 # Simulate the deliver indication event
