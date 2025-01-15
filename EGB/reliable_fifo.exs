@@ -59,7 +59,7 @@ defmodule ReliableFIFOBroadcast do
             # (i.e., this process is the default client); optional, but useful for debugging
             {:deliver, pid, proc, m} ->
                 state = %{state | pending: MapSet.put(state.pending, ({pid, proc, m, sn})}
-                \
+                
 
                 IO.puts("#{inspect state.name}, #{inspect pid}: RFIFO-deliver: #{inspect m} from #{inspect proc}")
                 state
